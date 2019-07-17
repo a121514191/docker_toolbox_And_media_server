@@ -44,6 +44,29 @@ docker rm -f $(docker ps -aq) 刪除換下一個
 step1 先建立好centos的container
 
 ```
+docker pull centos
 
+docker run -p 80:80 -d --privileged=true centos
+
+docker exec -it centos bash
+
+yum update
+```
+之後按照參考網址安裝
+
+https://www.howtoing.com/centos-plex-media-server
+
+都完成後打包成image檔
 
 ```
+docker ps -a 
+
+docker commit (id) (命名)
+
+docker images
+
+docker run -d --privileged=true -v /c/:/myhome --net=host plex
+```
+![](https://github.com/a121514191/linux_media/blob/master/plexmedia.PNG)
+
+### 實作
